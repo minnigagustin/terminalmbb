@@ -1,0 +1,22 @@
+version: "3.7"
+
+services:
+  front:
+    #image: project-name
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: politica_social_front
+    restart: always
+    volumes:
+      - ./:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "4000:3000"
+    networks:
+      - terminal_omnibus_front_net
+
+networks:
+  politica_social_front_net:
+    driver: bridge
