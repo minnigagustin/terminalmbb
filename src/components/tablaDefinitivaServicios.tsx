@@ -173,7 +173,7 @@ const TableDefinitivaServicios = ({
             </Box>
         </Stack>
             <TableContainer bg={"white"} borderRadius={10} mt={4}>
-                <Table variant="simple" >
+                <Table variant='striped' colorScheme='gray' >
                     <Thead bg={"#6690F4"}>
                         <Tr>
                             <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("id")}><Flex align="center">
