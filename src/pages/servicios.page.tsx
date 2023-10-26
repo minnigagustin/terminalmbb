@@ -45,7 +45,6 @@ import { AppDispatch } from "@component/store";
 import {
   gruposGet,
   intervencionesGet,
-  personasRegistradas,
   prestacionesGet,
 } from "@component/store/inicioSlice";
 import { getCalles } from "@component/store/consultaSlice";
