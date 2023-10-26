@@ -19,7 +19,9 @@ export const useAuthStore = create<AuthState>()(
   persist(
     (set) => ({
       isAuthenticated: false,
-      username: null,
+      nombre: null,
+      apellido: null,
+      rol: null,
       email: null,
       tokens: null,
       login: (userData: any) => {
@@ -37,7 +39,6 @@ export const useAuthStore = create<AuthState>()(
         }));
       },
       logout: () => {
-        console.log("sfaa");
         set((state) => ({
           ...state,
           nombre: null,
