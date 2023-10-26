@@ -17,6 +17,7 @@ import {
     Box,
     Wrap,
     WrapItem,
+    useToast,
 } from "@chakra-ui/react";
 import {
     FiChevronDown,
@@ -43,7 +44,7 @@ const TableDefinitiva = ({
     const [sortColumn, setSortColumn] = useState("nombre"); // Current sort column
     const [sortDirection, setSortDirection] = useState("asc"); // Sort direction: "asc" or "desc"
 
-
+    const toast = useToast();
     const categoriasUnicas = Array.from(nombresUnicos).map(nombre => ({
         label: nombre,
         value: nombre,
@@ -173,7 +174,8 @@ const TableDefinitiva = ({
         </Stack>
             <TableContainer bg={"white"} borderRadius={10} mt={4}>
                 <Table variant='striped' colorScheme='gray' >
-                    <Thead bg={"#6690F4"}>
+                    .
+                    0                    <Thead bg={"#6690F4"}>
                         <Tr>
                             <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("id")}><Flex align="center">
                                 <span>ID</span>

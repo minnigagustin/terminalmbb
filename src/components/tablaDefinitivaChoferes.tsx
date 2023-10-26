@@ -43,7 +43,7 @@ const TableDefinitivaChoferes = ({
     const [dependenciaFilter, setDependenciaFilter] = useState(""); // Nuevo estado
     const [sortColumn, setSortColumn] = useState("nombre"); // Current sort column
     const [sortDirection, setSortDirection] = useState("asc"); // Sort direction: "asc" or "desc"
-
+    const toast = useToast()
 
     const categoriasUnicas = Array.from(nombresUnicos).map(nombre => ({
         label: nombre,
