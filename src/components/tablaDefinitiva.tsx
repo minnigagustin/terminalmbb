@@ -172,7 +172,7 @@ const TableDefinitiva = ({
             </Box>
         </Stack>
             <TableContainer bg={"white"} borderRadius={10} mt={4}>
-                <Table variant="simple" >
+                <Table variant='striped' colorScheme='gray' >
                     <Thead bg={"#6690F4"}>
                         <Tr>
                             <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("id")}><Flex align="center">
@@ -335,22 +335,22 @@ const TableDefinitiva = ({
                         </Tr>
                     </Thead>
 
-                    <Thead >
+                    <Thead bg={"gray.100"}>
                         <Tr>
-                            <Th color="white"><Input type="number" /></Th>
-                            <Th color="#6690F4"><Input type="text" value={searchValue}
+                            <Th color="white"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="text" value={searchValue} bg={"white"}
                                 onChange={(e) => setSearchValue(e.target.value)} /></Th>
-                            <Th color="#6690F4"><Input type="number" /></Th>
-                            <Th color="#6690F4"><Input type="number" /></Th>
-                            <Th color="#6690F4"><Input type="number" /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
 
-                            <Th color="#6690F4"><Input type="number" /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
 
-                            <Th color="#6690F4"><Input type="number" /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
 
-                            <Th color="#6690F4"><Input type="number" /></Th>
-                            <Th color="#6690F4"><Input type="number" /></Th>
-                            <Th color="#6690F4"><Input type="number" /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
 
                         </Tr>
                     </Thead>

@@ -5,32 +5,16 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 //import { Profile } from "../../interfaces/data-interface";
 import axios from "axios";
 
-export const personasRegistradas = createAsyncThunk(
-  "user/personas/registradas",
-  async (data: any, { rejectWithValue }) => {
+export const estadisticasGet = createAsyncThunk(
+  "user/estadisticas",
+  async (_, { rejectWithValue }) => {
     try {
       const response: any = await AxiosLogged.get(
-        `/ayudas_registradas/${data.mes}&${data.anio}`
+        `/estadisticas`
       );
-      const responseayudas: any = await AxiosLogged.get(
-        `ayudas_prestaciones/${data.mes}&${data.anio}`
-      );
-      const responsegrupos: any = await AxiosLogged.get(
-        `cantidad_grupo_familiares`
-      );
-      const responseintervenciones: any = await AxiosLogged.get(
-        `intervenciones_familiares/${data.mes}&${data.anio}`
-      );
+
       //@ts-ignore
-      const responsegeneral = {
-        ayudas: response.data[0],
-        prestaciones: responseayudas.data,
-        grupos: responsegrupos.data[0],
-        intervenciones: responseintervenciones.data[0]
-      }
-      console.log(responsegeneral);
-      //@ts-ignore
-      return responsegeneral;
+      return response.data;
     } catch (error: any) {
       console.log(error.response.data, "falle aqui");
       return rejectWithValue(error);
@@ -126,6 +110,11 @@ interface Pros {
   gruposfamiliares: number;
   intervenciones: number;
   prestacionesregistradas: any;
+  servicios?: number;
+  choferes?: number;
+  empresas?: number;
+  movimientos?: number;
+
   error: {
     status?: number;
     message: string;
@@ -138,6 +127,10 @@ const initialState: Pros = {
   personasregistradas: 0,
   gruposfamiliares: 0,
   intervenciones: 0,
+  servicios: 0,
+  choferes: 0,
+  empresas: 0,
+  movimientos: 0,
   prestacionesregistradas: [],
   error: {
     status: 0,
@@ -151,19 +144,18 @@ const inicioSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(personasRegistradas.pending, (state) => {
+    builder.addCase(estadisticasGet.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(personasRegistradas.fulfilled, (state, { payload }) => {
+    builder.addCase(estadisticasGet.fulfilled, (state, { payload }) => {
       state.loading = false;
-      state.personasregistradas = payload.ayudas.Cantidad;
-      state.intervenciones = payload.intervenciones.Intervisiones;
-      state.prestacionesregistradas = payload.prestaciones;
-      state.gruposfamiliares = payload.grupos.CGF;
-
+      state.servicios = payload.servicios;
+      state.empresas = payload.empresas;
+      state.choferes = payload.choferes;
+      state.movimientos = payload.movimientos;
 
     });
-    builder.addCase(personasRegistradas.rejected, (state, action: any) => {
+    builder.addCase(estadisticasGet.rejected, (state, action: any) => {
       state.loading = false;
       console.log(action);
 

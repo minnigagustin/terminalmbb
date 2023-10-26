@@ -75,7 +75,7 @@ export default function Home() {
   return (
     <>
       <Header>
-        <Container minHeight="100vh" maxW="full" h={"full"} bg="#EEF1F9">
+        <Container minHeight="100vh" maxW="full" h={"full"} bg="#EEF1F9" mt={10}>
           <TableDefinitiva title={'MOVIMIENTOS'} list={movimientos} />
 
         </Container>

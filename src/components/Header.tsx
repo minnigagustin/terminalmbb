@@ -53,6 +53,7 @@ import {
   IntervencionesIcon,
   PersonasIcon,
   PrestacionesIcon,
+  movimientosIcon,
 } from "./Icons";
 import { useRouter } from "next/router";
 import Link from "next/link";
@@ -69,7 +70,7 @@ interface LinkItemProps {
 }
 const LinkItems: Array<LinkItemProps> = [
   { name: "Escritorio", path: "/", icon: IndicadoresIcon },
-  { name: "Movimientos", path: "/movimientos", icon: FiAperture },
+  { name: "Movimientos", path: "/movimientos", icon: movimientosIcon },
   { name: "Choferes", path: "/choferes", icon: FiUser },
   { name: "Empresas", path: "/empresas", icon: FiBriefcase },
   { name: "Servicios", path: "/servicios", icon: FiBookmark },

@@ -37,6 +37,7 @@ export const useAuthStore = create<AuthState>()(
         }));
       },
       logout: () => {
+        console.log("sfaa");
         set((state) => ({
           ...state,
           nombre: null,

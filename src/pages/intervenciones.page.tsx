@@ -71,7 +71,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header>
-        <Container minHeight="100vh" maxW="full" h={"full"} bg="#EEF1F9">
+        <Container minHeight="100vh" maxW="full" h={"full"} bg="#EEF1F9" mt={10}>
           <Button colorScheme="blue" mb={4} p={5} >
             Agregar intervenciones +
           </Button>
