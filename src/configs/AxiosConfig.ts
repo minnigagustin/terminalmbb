@@ -58,13 +58,13 @@ AxiosLogged.interceptors.response.use(
           // Si falla el refresco, redirige al usuario al inicio de sesión
           //@ts-ignore
 
-          authStore.logout();
+          useAuthStore.getState().logout();
           // Puedes redirigir al usuario a la página de inicio de sesión aquí
         }
       } else {
         // Si no hay un token de refresco disponible, redirige al usuario al inicio de sesión
         //@ts-ignore
-        authStore.logout();
+        useAuthStore.getState().logout();
         // Puedes redirigir al usuario a la página de inicio de sesión aquí
       }
     }

@@ -111,16 +111,7 @@ const TableDefinitivaEmpresas = ({
                             <Icon as={FiEdit} />
                         </Button>
                     </WrapItem>
-                    <WrapItem>
-                        <Button bg="#4283D3" color="white">
-                            <Icon as={FiCalendar} />
-                        </Button>
-                    </WrapItem>
-                    <WrapItem>
-                        <Button bg="#4283D3" color="white">
-                            <Icon as={FiPieChart} />
-                        </Button>
-                    </WrapItem>
+
                     <WrapItem>
                         <Button bg="#4283D3" color="white">
                             <Icon as={FiSearch} />
@@ -281,14 +272,14 @@ const TableDefinitivaEmpresas = ({
 
                     <Thead bg={"gray.100"}>
                         <Tr>
-                            <Th color="white"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="text" value={searchValue}
+                            <Th color="white"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="text" value={searchValue} color={"black"}
                                 onChange={(e) => setSearchValue(e.target.value)} bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
 
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
 
 
 

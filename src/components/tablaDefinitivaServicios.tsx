@@ -113,16 +113,6 @@ const TableDefinitivaServicios = ({
                     </WrapItem>
                     <WrapItem>
                         <Button bg="#4283D3" color="white">
-                            <Icon as={FiCalendar} />
-                        </Button>
-                    </WrapItem>
-                    <WrapItem>
-                        <Button bg="#4283D3" color="white">
-                            <Icon as={FiPieChart} />
-                        </Button>
-                    </WrapItem>
-                    <WrapItem>
-                        <Button bg="#4283D3" color="white">
                             <Icon as={FiSearch} />
                         </Button>
                     </WrapItem>

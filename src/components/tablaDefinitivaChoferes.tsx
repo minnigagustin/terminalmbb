@@ -295,16 +295,16 @@ const TableDefinitivaChoferes = ({
 
                     <Thead bg={"gray.100"}>
                         <Tr>
-                            <Th color="white"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="text" value={searchValue}
+                            <Th color="white"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="text" value={searchValue} color={"black"}
                                 onChange={(e) => setSearchValue(e.target.value)} bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
 
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
 
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
 
 
                         </Tr>

@@ -112,16 +112,6 @@ const TableDefinitiva = ({
                     </WrapItem>
                     <WrapItem>
                         <Button bg="#4283D3" color="white">
-                            <Icon as={FiCalendar} />
-                        </Button>
-                    </WrapItem>
-                    <WrapItem>
-                        <Button bg="#4283D3" color="white">
-                            <Icon as={FiPieChart} />
-                        </Button>
-                    </WrapItem>
-                    <WrapItem>
-                        <Button bg="#4283D3" color="white">
                             <Icon as={FiSearch} />
                         </Button>
                     </WrapItem>
@@ -173,186 +163,184 @@ const TableDefinitiva = ({
             </Box>
         </Stack>
             <TableContainer bg={"white"} borderRadius={10} mt={4}>
-                <Table variant='striped' colorScheme='gray' >
-                    .
-                    0                    <Thead bg={"#6690F4"}>
-                        <Tr>
-                            <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("id")}><Flex align="center">
-                                <span>ID</span>
+                <Table variant='striped' colorScheme='gray' >                  <Thead bg={"#6690F4"}>
+                    <Tr>
+                        <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("id")}><Flex align="center">
+                            <span>ID</span>
+                            <Stack ml={2} direction="column" spacing={0}>
+                                <Icon
+                                    as={FiChevronUp}
+                                    fontSize={17}
+                                    color={sortColumn === "id" && sortDirection === "asc" ? 'white' : 'gray.600'}
+                                />
+                                <Icon
+                                    as={FiChevronDown}
+                                    fontSize={17}
+                                    color={sortColumn === "id" && sortDirection === "desc" ? 'white' : 'gray.600'}
+                                />
+                            </Stack>
+                        </Flex></Th>
+                        <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("nombre")}>
+                            <Flex align="center">
+                                <span>PLATAFORMA</span>
                                 <Stack ml={2} direction="column" spacing={0}>
                                     <Icon
                                         as={FiChevronUp}
                                         fontSize={17}
-                                        color={sortColumn === "id" && sortDirection === "asc" ? 'white' : 'gray.600'}
+                                        color={sortColumn === "nombre" && sortDirection === "asc" ? 'white' : 'gray.600'}
                                     />
                                     <Icon
                                         as={FiChevronDown}
                                         fontSize={17}
-                                        color={sortColumn === "id" && sortDirection === "desc" ? 'white' : 'gray.600'}
+                                        color={sortColumn === "nombre" && sortDirection === "desc" ? 'white' : 'gray.600'}
                                     />
                                 </Stack>
-                            </Flex></Th>
-                            <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("nombre")}>
-                                <Flex align="center">
-                                    <span>PLATAFORMA</span>
-                                    <Stack ml={2} direction="column" spacing={0}>
-                                        <Icon
-                                            as={FiChevronUp}
-                                            fontSize={17}
-                                            color={sortColumn === "nombre" && sortDirection === "asc" ? 'white' : 'gray.600'}
-                                        />
-                                        <Icon
-                                            as={FiChevronDown}
-                                            fontSize={17}
-                                            color={sortColumn === "nombre" && sortDirection === "desc" ? 'white' : 'gray.600'}
-                                        />
-                                    </Stack>
-                                </Flex>
-                            </Th>
-                            <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("horarioDestino")}><Flex align="center">
-                                <span>HORARIO DESTINO</span>
+                            </Flex>
+                        </Th>
+                        <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("horarioDestino")}><Flex align="center">
+                            <span>HORARIO DESTINO</span>
+                            <Stack ml={2} direction="column" spacing={0}>
+                                <Icon
+                                    as={FiChevronUp}
+                                    fontSize={17}
+                                    color={sortColumn === "horarioDestino" && sortDirection === "asc" ? 'white' : 'gray.600'}
+                                />
+                                <Icon
+                                    as={FiChevronDown}
+                                    fontSize={17}
+                                    color={sortColumn === "horarioDestino" && sortDirection === "desc" ? 'white' : 'gray.600'}
+                                />
+                            </Stack>
+                        </Flex></Th>
+                        <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("horarioServicio")}>
+                            <Flex align="center">
+                                <span>HORARIO SERVICIO</span>
                                 <Stack ml={2} direction="column" spacing={0}>
                                     <Icon
                                         as={FiChevronUp}
                                         fontSize={17}
-                                        color={sortColumn === "horarioDestino" && sortDirection === "asc" ? 'white' : 'gray.600'}
+                                        color={sortColumn === "horarioServicio" && sortDirection === "asc" ? 'white' : 'gray.600'}
                                     />
                                     <Icon
                                         as={FiChevronDown}
                                         fontSize={17}
-                                        color={sortColumn === "horarioDestino" && sortDirection === "desc" ? 'white' : 'gray.600'}
+                                        color={sortColumn === "horarioServicio" && sortDirection === "desc" ? 'white' : 'gray.600'}
                                     />
                                 </Stack>
-                            </Flex></Th>
-                            <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("horarioServicio")}>
-                                <Flex align="center">
-                                    <span>HORARIO SERVICIO</span>
-                                    <Stack ml={2} direction="column" spacing={0}>
-                                        <Icon
-                                            as={FiChevronUp}
-                                            fontSize={17}
-                                            color={sortColumn === "horarioServicio" && sortDirection === "asc" ? 'white' : 'gray.600'}
-                                        />
-                                        <Icon
-                                            as={FiChevronDown}
-                                            fontSize={17}
-                                            color={sortColumn === "horarioServicio" && sortDirection === "desc" ? 'white' : 'gray.600'}
-                                        />
-                                    </Stack>
-                                </Flex>
-                            </Th>
+                            </Flex>
+                        </Th>
 
 
-                            <Th color="white" fontSize="sm" onClick={() => handleColumnSort("destino")} align="center"><Flex align="center" justify={"center"}>
-                                <span>DESTINO</span>
-                                <Stack ml={2} direction="column" spacing={0}>
-                                    <Icon
-                                        as={FiChevronUp}
-                                        fontSize={17}
-                                        color={sortColumn === "destino" && sortDirection === "asc" ? 'white' : 'gray.600'}
-                                    />
-                                    <Icon
-                                        as={FiChevronDown}
-                                        fontSize={17}
-                                        color={sortColumn === "destino" && sortDirection === "desc" ? 'white' : 'gray.600'}
-                                    />
-                                </Stack>
-                            </Flex></Th>
-                            <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("origen")}><Flex align="center">
-                                <span>ORIGEN</span>
-                                <Stack ml={2} direction="column" spacing={0}>
-                                    <Icon
-                                        as={FiChevronUp}
-                                        fontSize={17}
-                                        color={sortColumn === "origen" && sortDirection === "asc" ? 'white' : 'gray.600'}
-                                    />
-                                    <Icon
-                                        as={FiChevronDown}
-                                        fontSize={17}
-                                        color={sortColumn === "origen" && sortDirection === "desc" ? 'white' : 'gray.600'}
-                                    />
-                                </Stack>
-                            </Flex></Th>
-                            <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("coche")}><Flex align="center">
-                                <span>Coche N°</span>
-                                <Stack ml={2} direction="column" spacing={0}>
-                                    <Icon
-                                        as={FiChevronUp}
-                                        fontSize={17}
-                                        color={sortColumn === "coche" && sortDirection === "asc" ? 'white' : 'gray.600'}
-                                    />
-                                    <Icon
-                                        as={FiChevronDown}
-                                        fontSize={17}
-                                        color={sortColumn === "coche" && sortDirection === "desc" ? 'white' : 'gray.600'}
-                                    />
-                                </Stack>
-                            </Flex></Th>
-                            <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("coche")}><Flex align="center">
-                                <span>Pasajeros</span>
-                                <Stack ml={2} direction="column" spacing={0}>
-                                    <Icon
-                                        as={FiChevronUp}
-                                        fontSize={17}
-                                        color={sortColumn === "coche" && sortDirection === "asc" ? 'white' : 'gray.600'}
-                                    />
-                                    <Icon
-                                        as={FiChevronDown}
-                                        fontSize={17}
-                                        color={sortColumn === "coche" && sortDirection === "desc" ? 'white' : 'gray.600'}
-                                    />
-                                </Stack>
-                            </Flex></Th>
+                        <Th color="white" fontSize="sm" onClick={() => handleColumnSort("destino")} align="center"><Flex align="center" justify={"center"}>
+                            <span>DESTINO</span>
+                            <Stack ml={2} direction="column" spacing={0}>
+                                <Icon
+                                    as={FiChevronUp}
+                                    fontSize={17}
+                                    color={sortColumn === "destino" && sortDirection === "asc" ? 'white' : 'gray.600'}
+                                />
+                                <Icon
+                                    as={FiChevronDown}
+                                    fontSize={17}
+                                    color={sortColumn === "destino" && sortDirection === "desc" ? 'white' : 'gray.600'}
+                                />
+                            </Stack>
+                        </Flex></Th>
+                        <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("origen")}><Flex align="center">
+                            <span>ORIGEN</span>
+                            <Stack ml={2} direction="column" spacing={0}>
+                                <Icon
+                                    as={FiChevronUp}
+                                    fontSize={17}
+                                    color={sortColumn === "origen" && sortDirection === "asc" ? 'white' : 'gray.600'}
+                                />
+                                <Icon
+                                    as={FiChevronDown}
+                                    fontSize={17}
+                                    color={sortColumn === "origen" && sortDirection === "desc" ? 'white' : 'gray.600'}
+                                />
+                            </Stack>
+                        </Flex></Th>
+                        <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("coche")}><Flex align="center">
+                            <span>Coche N°</span>
+                            <Stack ml={2} direction="column" spacing={0}>
+                                <Icon
+                                    as={FiChevronUp}
+                                    fontSize={17}
+                                    color={sortColumn === "coche" && sortDirection === "asc" ? 'white' : 'gray.600'}
+                                />
+                                <Icon
+                                    as={FiChevronDown}
+                                    fontSize={17}
+                                    color={sortColumn === "coche" && sortDirection === "desc" ? 'white' : 'gray.600'}
+                                />
+                            </Stack>
+                        </Flex></Th>
+                        <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("coche")}><Flex align="center">
+                            <span>Pasajeros</span>
+                            <Stack ml={2} direction="column" spacing={0}>
+                                <Icon
+                                    as={FiChevronUp}
+                                    fontSize={17}
+                                    color={sortColumn === "coche" && sortDirection === "asc" ? 'white' : 'gray.600'}
+                                />
+                                <Icon
+                                    as={FiChevronDown}
+                                    fontSize={17}
+                                    color={sortColumn === "coche" && sortDirection === "desc" ? 'white' : 'gray.600'}
+                                />
+                            </Stack>
+                        </Flex></Th>
 
-                            <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("coche")}><Flex align="center">
-                                <span>Empresa</span>
-                                <Stack ml={2} direction="column" spacing={0}>
-                                    <Icon
-                                        as={FiChevronUp}
-                                        fontSize={17}
-                                        color={sortColumn === "coche" && sortDirection === "asc" ? 'white' : 'gray.600'}
-                                    />
-                                    <Icon
-                                        as={FiChevronDown}
-                                        fontSize={17}
-                                        color={sortColumn === "coche" && sortDirection === "desc" ? 'white' : 'gray.600'}
-                                    />
-                                </Stack>
-                            </Flex></Th>
-                            <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("coche")}><Flex align="center">
-                                <span>Chofer</span>
-                                <Stack ml={2} direction="column" spacing={0}>
-                                    <Icon
-                                        as={FiChevronUp}
-                                        fontSize={17}
-                                        color={sortColumn === "coche" && sortDirection === "asc" ? 'white' : 'gray.600'}
-                                    />
-                                    <Icon
-                                        as={FiChevronDown}
-                                        fontSize={17}
-                                        color={sortColumn === "coche" && sortDirection === "desc" ? 'white' : 'gray.600'}
-                                    />
-                                </Stack>
-                            </Flex></Th>
-                        </Tr>
-                    </Thead>
+                        <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("coche")}><Flex align="center">
+                            <span>Empresa</span>
+                            <Stack ml={2} direction="column" spacing={0}>
+                                <Icon
+                                    as={FiChevronUp}
+                                    fontSize={17}
+                                    color={sortColumn === "coche" && sortDirection === "asc" ? 'white' : 'gray.600'}
+                                />
+                                <Icon
+                                    as={FiChevronDown}
+                                    fontSize={17}
+                                    color={sortColumn === "coche" && sortDirection === "desc" ? 'white' : 'gray.600'}
+                                />
+                            </Stack>
+                        </Flex></Th>
+                        <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("coche")}><Flex align="center">
+                            <span>Chofer</span>
+                            <Stack ml={2} direction="column" spacing={0}>
+                                <Icon
+                                    as={FiChevronUp}
+                                    fontSize={17}
+                                    color={sortColumn === "coche" && sortDirection === "asc" ? 'white' : 'gray.600'}
+                                />
+                                <Icon
+                                    as={FiChevronDown}
+                                    fontSize={17}
+                                    color={sortColumn === "coche" && sortDirection === "desc" ? 'white' : 'gray.600'}
+                                />
+                            </Stack>
+                        </Flex></Th>
+                    </Tr>
+                </Thead>
 
                     <Thead bg={"gray.100"}>
                         <Tr>
-                            <Th color="white"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="text" value={searchValue} bg={"white"}
+                            <Th color="white"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="text" value={searchValue} bg={"white"} color={"black"}
                                 onChange={(e) => setSearchValue(e.target.value)} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
 
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
 
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
 
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
-                            <Th color="#6690F4"><Input type="number" bg={"white"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
+                            <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
 
                         </Tr>
                     </Thead>
