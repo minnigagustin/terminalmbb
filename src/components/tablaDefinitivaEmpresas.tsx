@@ -29,6 +29,7 @@ import {
     FiCalendar,
     FiTrash,
     FiChevronUp,
+    FiRotateCw,
 } from "react-icons/fi";
 import NextLink from 'next/link'
 import { Select } from "chakra-react-select";
@@ -152,7 +153,7 @@ const TableDefinitivaEmpresas = ({
                                 })
                             }
                         >
-                            <Icon as={FiPieChart} />
+                            <Icon as={FiRotateCw} />
                         </Button>
                     </WrapItem>
                     <WrapItem>
@@ -270,7 +271,7 @@ const TableDefinitivaEmpresas = ({
                         </Tr>
                     </Thead>
 
-                    <Thead bg={"gray.100"}>
+                    {/*  <Thead bg={"gray.100"}>
                         <Tr>
                             <Th color="white"><Input type="number" bg={"white"} color={"black"} /></Th>
                             <Th color="#6690F4"><Input type="text" value={searchValue} color={"black"}
@@ -284,7 +285,7 @@ const TableDefinitivaEmpresas = ({
 
 
                         </Tr>
-                    </Thead>
+                    </Thead> */}
                     <Tbody>
                         {currentItems.map((item, index) => (
                             <Tr key={index}>

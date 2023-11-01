@@ -29,6 +29,7 @@ import {
     FiCalendar,
     FiTrash,
     FiChevronUp,
+    FiRotateCw,
 } from "react-icons/fi";
 import NextLink from 'next/link'
 import { Select } from "chakra-react-select";
@@ -44,7 +45,10 @@ const TableDefinitivaServicios = ({
     const [dependenciaFilter, setDependenciaFilter] = useState(""); // Nuevo estado
     const [sortColumn, setSortColumn] = useState("nombre"); // Current sort column
     const [sortDirection, setSortDirection] = useState("asc"); // Sort direction: "asc" or "desc"
-    const toast = useToast()
+    const toast = useToast();
+    const [selectedItem, setSelectedItem] = useState(null); // Elemento seleccionado
+    const [isDeleteAlertOpen, setIsDeleteAlertOpen] = useState(false); // Estado del cuadro de diálogo de eliminación
+
 
     const categoriasUnicas = Array.from(nombresUnicos).map(nombre => ({
         label: nombre,
@@ -117,7 +121,13 @@ const TableDefinitivaServicios = ({
                         </Button>
                     </WrapItem>
                     <WrapItem>
-                        <Button colorScheme="red">
+                        <Button colorScheme="red" onClick={() => {
+                            if (selectedItem) {
+                                setIsDeleteAlertOpen(true);
+                            } else {
+                                // Muestra un mensaje de error o notificación si no se ha seleccionado un elemento.
+                            }
+                        }} >
                             <Icon as={FiTrash} />
                         </Button>
 
@@ -151,7 +161,7 @@ const TableDefinitivaServicios = ({
                                 })
                             }
                         >
-                            <Icon as={FiPieChart} />
+                            <Icon as={FiRotateCw} />
                         </Button>
                     </WrapItem>
                     <WrapItem>

@@ -18,6 +18,14 @@ import {
     Wrap,
     WrapItem,
     useToast,
+    AlertDialog,
+    AlertDialogOverlay,
+    AlertDialogContent,
+    AlertDialogHeader,
+    AlertDialogCloseButton,
+    AlertDialogBody,
+    AlertDialogFooter,
+    useDisclosure,
 } from "@chakra-ui/react";
 import {
     FiChevronDown,
@@ -28,6 +36,7 @@ import {
     FiCalendar,
     FiTrash,
     FiChevronUp,
+    FiRotateCw,
 } from "react-icons/fi";
 import NextLink from 'next/link'
 import { Select } from "chakra-react-select";
@@ -43,8 +52,9 @@ const TableDefinitiva = ({
     const [dependenciaFilter, setDependenciaFilter] = useState(""); // Nuevo estado
     const [sortColumn, setSortColumn] = useState("nombre"); // Current sort column
     const [sortDirection, setSortDirection] = useState("asc"); // Sort direction: "asc" or "desc"
-
+    const [selectedRow, setSelectedRow] = useState(null);
     const toast = useToast();
+    const { isOpen: isAlertDialogOpen, onOpen: onOpenAlertDialog, onClose: onCloseAlertDialog } = useDisclosure();
     const categoriasUnicas = Array.from(nombresUnicos).map(nombre => ({
         label: nombre,
         value: nombre,
@@ -91,6 +101,35 @@ const TableDefinitiva = ({
             alignItems="center"
             px="0"
         >
+            <AlertDialog isOpen={isAlertDialogOpen} onClose={onCloseAlertDialog}>
+                <AlertDialogOverlay>
+                    <AlertDialogContent>
+                        <AlertDialogHeader fontSize="lg" fontWeight="bold">
+                            Confirmación de eliminación
+                        </AlertDialogHeader>
+                        <AlertDialogCloseButton />
+                        <AlertDialogBody>
+                            ¿Estás seguro de que deseas eliminar esta fila?
+                        </AlertDialogBody>
+                        <AlertDialogFooter>
+                            <Button colorScheme="red" onClick={onCloseAlertDialog}>
+                                Cancelar
+                            </Button>
+                            <Button
+                                colorScheme="green"
+                                onClick={() => {
+                                    // Realiza la eliminación de la fila seleccionada aquí
+                                    // Asegúrate de actualizar tu fuente de datos o estado en consecuencia.
+                                    onCloseAlertDialog();
+                                }}
+                                ml={3}
+                            >
+                                Eliminar
+                            </Button>
+                        </AlertDialogFooter>
+                    </AlertDialogContent>
+                </AlertDialogOverlay>
+            </AlertDialog>
             <Box>
                 <Wrap spacing={1}>
                     <WrapItem>
@@ -116,10 +155,16 @@ const TableDefinitiva = ({
                         </Button>
                     </WrapItem>
                     <WrapItem>
-                        <Button colorScheme="red">
+                        <Button
+                            colorScheme="red"
+                            onClick={() => {
+                                if (selectedRow !== null) {
+                                    onOpenAlertDialog();
+                                }
+                            }}
+                        >
                             <Icon as={FiTrash} />
                         </Button>
-
                     </WrapItem>
                 </Wrap>
             </Box>
@@ -150,7 +195,7 @@ const TableDefinitiva = ({
                                 })
                             }
                         >
-                            <Icon as={FiPieChart} />
+                            <Icon as={FiRotateCw} />
                         </Button>
                     </WrapItem>
                     <WrapItem>
@@ -163,26 +208,12 @@ const TableDefinitiva = ({
             </Box>
         </Stack>
             <TableContainer bg={"white"} borderRadius={10} mt={4}>
-                <Table variant='striped' colorScheme='gray' >                  <Thead bg={"#6690F4"}>
-                    <Tr>
-                        <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("id")}><Flex align="center">
-                            <span>ID</span>
-                            <Stack ml={2} direction="column" spacing={0}>
-                                <Icon
-                                    as={FiChevronUp}
-                                    fontSize={17}
-                                    color={sortColumn === "id" && sortDirection === "asc" ? 'white' : 'gray.600'}
-                                />
-                                <Icon
-                                    as={FiChevronDown}
-                                    fontSize={17}
-                                    color={sortColumn === "id" && sortDirection === "desc" ? 'white' : 'gray.600'}
-                                />
-                            </Stack>
-                        </Flex></Th>
+                <Table colorScheme='gray' >                  <Thead bg={"#6690F4"}>
+                    <Tr >
+
                         <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("nombre")}>
                             <Flex align="center">
-                                <span>PLATAFORMA</span>
+                                <span>PL.</span>
                                 <Stack ml={2} direction="column" spacing={0}>
                                     <Icon
                                         as={FiChevronUp}
@@ -198,7 +229,7 @@ const TableDefinitiva = ({
                             </Flex>
                         </Th>
                         <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("horarioDestino")}><Flex align="center">
-                            <span>HORARIO DESTINO</span>
+                            <span>H. DESTINO</span>
                             <Stack ml={2} direction="column" spacing={0}>
                                 <Icon
                                     as={FiChevronUp}
@@ -214,7 +245,7 @@ const TableDefinitiva = ({
                         </Flex></Th>
                         <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("horarioServicio")}>
                             <Flex align="center">
-                                <span>HORARIO SERVICIO</span>
+                                <span>H. SERVICIO</span>
                                 <Stack ml={2} direction="column" spacing={0}>
                                     <Icon
                                         as={FiChevronUp}
@@ -293,7 +324,7 @@ const TableDefinitiva = ({
                         </Flex></Th>
 
                         <Th color="white" fontSize={"sm"} onClick={() => handleColumnSort("coche")}><Flex align="center">
-                            <span>Empresa</span>
+                            <span>Emp.</span>
                             <Stack ml={2} direction="column" spacing={0}>
                                 <Icon
                                     as={FiChevronUp}
@@ -325,9 +356,8 @@ const TableDefinitiva = ({
                     </Tr>
                 </Thead>
 
-                    <Thead bg={"gray.100"}>
+                    {/*  <Thead bg={"gray.100"}>
                         <Tr>
-                            <Th color="white"><Input type="number" bg={"white"} color={"black"} /></Th>
                             <Th color="#6690F4"><Input type="text" value={searchValue} bg={"white"} color={"black"}
                                 onChange={(e) => setSearchValue(e.target.value)} /></Th>
                             <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
@@ -343,15 +373,15 @@ const TableDefinitiva = ({
                             <Th color="#6690F4"><Input type="number" bg={"white"} color={"black"} /></Th>
 
                         </Tr>
-                    </Thead>
+                    </Thead> */}
                     <Tbody>
                         {currentItems.map((item, index) => (
-                            <Tr key={index}>
-                                <Td >
-                                    <Link as={NextLink} href={`pedidodetalles/${item.NUM_PED}`} _hover={{ color: 'gray.800', textDecoration: 'underline', }} fontWeight={600}
-                                        color={"muni.celeste"}>
-                                        {item.id}
-                                    </Link></Td>
+                            <Tr key={index} onClick={() => setSelectedRow(index)}
+                                style={{
+                                    backgroundColor: selectedRow === index ? "lightgray" : "transparent",
+                                    cursor: "pointer",
+                                }}>
+
                                 <Td fontWeight={300}>{item.plataforma}</Td>
                                 <Td fontWeight={300}>{item.horario_dest}</Td>
                                 <Td fontWeight={300}>{item.horario_servicio}</Td>
