@@ -10,6 +10,9 @@ import {
   Flex,
   Grid,
   HStack,
+  Modal,
+  ModalContent,
+  ModalOverlay,
   SimpleGrid,
   Skeleton,
   Stat,
@@ -21,6 +24,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
+  useDisclosure,
 } from "@chakra-ui/react";
 import CardDashboard from "@component/components/CardDashboard";
 import {
@@ -53,6 +57,7 @@ import { getChoferes } from "@component/store/choferesSlice";
 import TableDefinitivaChoferes from "@component/components/tablaDefinitivaChoferes";
 import { getEmpresas } from "@component/store/empresasSlice";
 import TableDefinitivaEmpresas from "@component/components/tablaDefinitivaEmpresas";
+import ModalEmpresasAdd from "@component/components/ModalEmpresasAdd ";
 
 const CardChart = dynamic(
   () => {
@@ -65,7 +70,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const dispatch: AppDispatch = useDispatch();
-
+  const {
+    isOpen: isOpenAdd,
+    onOpen: onOpenAdd,
+    onClose: onCloseAdd,
+  } = useDisclosure();
   const {
     empresas,
   } = useSelector((resp: any) => resp.empresas);
@@ -79,7 +88,13 @@ export default function Home() {
     <>
       <Header>
         <Container minHeight="100vh" maxW="full" h={"full"} bg="#EEF1F9" mt={10}>
-          <TableDefinitivaEmpresas title={'EMPRESAS'} list={empresas} />
+          <Modal onClose={onCloseAdd} isOpen={isOpenAdd} isCentered>
+            <ModalOverlay />
+            <ModalContent w={"90%"}>
+              <ModalEmpresasAdd onClose={onCloseAdd} />
+            </ModalContent>
+          </Modal>
+          <TableDefinitivaEmpresas onOpen={onOpenAdd} title={'EMPRESAS'} list={empresas} />
 
         </Container>
       </Header>

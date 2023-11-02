@@ -10,6 +10,9 @@ import {
   Flex,
   Grid,
   HStack,
+  Modal,
+  ModalContent,
+  ModalOverlay,
   SimpleGrid,
   Skeleton,
   Stat,
@@ -21,6 +24,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
+  useDisclosure,
 } from "@chakra-ui/react";
 import CardDashboard from "@component/components/CardDashboard";
 import {
@@ -49,6 +53,7 @@ import {
 import { getCalles } from "@component/store/consultaSlice";
 import TableDefinitiva from "@component/components/tablaDefinitiva";
 import { getMovimientos } from "@component/store/movimientosSlice";
+import ModalMovimientosAdd from "@component/components/ModalMovimientosAdd";
 
 const CardChart = dynamic(
   () => {
@@ -61,7 +66,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const dispatch: AppDispatch = useDispatch();
-
+  const {
+    isOpen: isOpenAdd,
+    onOpen: onOpenAdd,
+    onClose: onCloseAdd,
+  } = useDisclosure();
   const {
     movimientos,
   } = useSelector((resp: any) => resp.movimientos);
@@ -75,7 +84,13 @@ export default function Home() {
     <>
       <Header>
         <Container minHeight="100vh" maxW="full" h={"full"} bg="#EEF1F9" mt={10}>
-          <TableDefinitiva title={'MOVIMIENTOS'} list={movimientos} />
+          <Modal onClose={onCloseAdd} isOpen={isOpenAdd} isCentered>
+            <ModalOverlay />
+            <ModalContent w={"90%"}>
+              <ModalMovimientosAdd onClose={onCloseAdd} />
+            </ModalContent>
+          </Modal>
+          <TableDefinitiva onOpen={onOpenAdd} title={'MOVIMIENTOS'} list={movimientos} />
 
         </Container>
       </Header>

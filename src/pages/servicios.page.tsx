@@ -10,6 +10,9 @@ import {
   Flex,
   Grid,
   HStack,
+  Modal,
+  ModalContent,
+  ModalOverlay,
   SimpleGrid,
   Skeleton,
   Spinner,
@@ -22,6 +25,7 @@ import {
   TabPanel,
   TabPanels,
   Tabs,
+  useDisclosure,
 } from "@chakra-ui/react";
 import CardDashboard from "@component/components/CardDashboard";
 import {
@@ -56,6 +60,7 @@ import { getEmpresas } from "@component/store/empresasSlice";
 import TableDefinitivaEmpresas from "@component/components/tablaDefinitivaEmpresas";
 import TableDefinitivaServicios from "@component/components/tablaDefinitivaServicios";
 import { getServicios } from "@component/store/serviciosSlice";
+import ModalServiciosAdd from "@component/components/ModalServiciosAdd";
 
 const CardChart = dynamic(
   () => {
@@ -68,7 +73,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const dispatch: AppDispatch = useDispatch();
-
+  const {
+    isOpen: isOpenAdd,
+    onOpen: onOpenAdd,
+    onClose: onCloseAdd,
+  } = useDisclosure();
   const {
     servicios, loading
   } = useSelector((resp: any) => resp.servicios);
@@ -82,8 +91,14 @@ export default function Home() {
     <>
       <Header>
         <Container minHeight="100vh" maxW="full" h={"full"} bg="#EEF1F9" mt={10}>
+          <Modal onClose={onCloseAdd} isOpen={isOpenAdd} isCentered>
+            <ModalOverlay />
+            <ModalContent w={"90%"}>
+              <ModalServiciosAdd onClose={onCloseAdd} />
+            </ModalContent>
+          </Modal>
           {loading ? <Spinner /> :
-            <TableDefinitivaServicios title={'SERVICIOS'} list={servicios} />
+            <TableDefinitivaServicios onOpen={onOpenAdd} title={'SERVICIOS'} list={servicios} />
           }
         </Container>
       </Header>

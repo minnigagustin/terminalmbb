@@ -43,6 +43,7 @@ import { Select } from "chakra-react-select";
 const TableDefinitiva = ({
     title,
     list,
+    onOpen
 }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
@@ -136,6 +137,7 @@ const TableDefinitiva = ({
                         <Button
                             bg="#4283D3"
                             color="white"
+                            onClick={onOpen}
                         >
                             <Icon as={FiPlus} />
                         </Button>

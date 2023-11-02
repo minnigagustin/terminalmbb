@@ -36,6 +36,7 @@ import { Select } from "chakra-react-select";
 const TableDefinitivaEmpresas = ({
     title,
     list,
+    onOpen
 }) => {
     const [currentPage, setCurrentPage] = useState(1);
     const itemsPerPage = 10;
@@ -56,11 +57,7 @@ const TableDefinitivaEmpresas = ({
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
     // Apply filtering to the list
-    const filteredList = list.filter((item) =>
-        item?.nombre?.includes(searchValue) &&
-        item?.apellido?.includes(searchCosto) &&
-        (dependenciaFilter === "" || item.apellido === dependenciaFilter)
-    );
+    const filteredList = list;
 
     // Sort the filtered list
     const sortedItems = filteredList.slice().sort((a, b) => {
@@ -74,7 +71,7 @@ const TableDefinitivaEmpresas = ({
     });
 
     // Get the current items to display
-    const currentItems = list.slice(indexOfFirstItem, indexOfLastItem);
+    const currentItems = sortedItems.slice(indexOfFirstItem, indexOfLastItem);
 
     const handleColumnSort = (column) => {
         if (sortColumn === column) {
@@ -99,6 +96,7 @@ const TableDefinitivaEmpresas = ({
                         <Button
                             bg="#4283D3"
                             color="white"
+                            onClick={onOpen}
                         >
                             <Icon as={FiPlus} />
                         </Button>
@@ -135,8 +133,7 @@ const TableDefinitivaEmpresas = ({
                 <Wrap spacing={1} align="center">
                     {/* <Input placeholder='Buscar...' width="auto"/> */}
                     <WrapItem>
-                        <Text fontSize="sm" color={"blackAlpha.800"} fontWeight="bold">{indexOfFirstItem} de {list.length}</Text>
-                        <Text ml={1} fontSize="sm" color={"blackAlpha.800"}>(filtrados de 153)</Text>
+                        <Text fontSize="sm" color={"blackAlpha.800"} fontWeight="bold">{indexOfFirstItem} de {filteredList.length}</Text>
                     </WrapItem>
                     <WrapItem>
                         <Button
