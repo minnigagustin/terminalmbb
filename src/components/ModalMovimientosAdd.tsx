@@ -34,6 +34,15 @@ const ModalMovimientosAdd = ({ product, onClose }: any) => {
     const [email, setEmail] = useState("");
     const [telefono, setTelefono] = useState("");
     const [apellido, setApellido] = useState("");
+    const [plataforma, setPlataforma] = useState("");
+    const [horariodestino, setHorarioDestino] = useState("");
+    const [horarioservicio, setHorarioServicio] = useState("");
+    const [origen, setOrigen] = useState("");
+    const [destino, setDestino] = useState("");
+    const [coche, setCoche] = useState("");
+    const [pasajeros, setPasajeros] = useState("");
+    const [empresa, setEmpresa] = useState("");
+    const [chofer, setChofer] = useState("");
 
     const [celular, setCelular] = useState("");
     const [tipo, setTipo] = useState("");
@@ -75,12 +84,13 @@ const ModalMovimientosAdd = ({ product, onClose }: any) => {
         const formData = new FormData();
         //@ts-ignore
         //@ts-ignore
-        formData.append("nombre", nombre); // Agrega el nombre al FormData
-        formData.append("apellido", apellido); // Agrega el nombre al FormData
+        formData.append("plataforma", plataforma); // Agrega el nombre al FormData
+        formData.append("horario_dest", horariodestino); // Agrega el nombre al FormData
 
-        formData.append("documento_nro", documento); // Agrega el nombre al FormData
-        formData.append("email", email); // Agrega el nombre al FormData
-        formData.append("telefono", telefono); // Agrega el nombre al FormData
+        formData.append("empresa_id", empresa); // Agrega el nombre al FormData
+        formData.append("horario_servicio", horarioservicio); // Agrega el nombre al FormData
+        formData.append("horario_arrivo_plataforma", horariodestino); // Agrega el nombre al FormData
+        formData.append("origen", origen); // Agrega el nombre al FormData
 
         //@ts-ignore
         formData.append("activo", true); // Agrega el nombre al FormData
@@ -119,7 +129,7 @@ const ModalMovimientosAdd = ({ product, onClose }: any) => {
                     placeholder="Plataforma"
                     _placeholder={{ color: "gray.500" }}
                     type="text"
-                    onChange={(event) => setApellido(event.target.value)}
+                    onChange={(event) => setPlataforma(event.target.value)}
                 />
             </FormControl>
             <HStack>
@@ -129,7 +139,7 @@ const ModalMovimientosAdd = ({ product, onClose }: any) => {
                         placeholder="Plataforma"
                         _placeholder={{ color: "gray.500" }}
                         type="time"
-                        onChange={(event) => setApellido(event.target.value)}
+                        onChange={(event) => setHorarioDestino(event.target.value)}
                     />
                 </FormControl>
                 <FormControl id="userName" isRequired>
@@ -138,7 +148,7 @@ const ModalMovimientosAdd = ({ product, onClose }: any) => {
                         placeholder="Nombre"
                         _placeholder={{ color: "gray.500" }}
                         type="time"
-                        onChange={(event) => SetNombre(event.target.value)}
+                        onChange={(event) => setHorarioServicio(event.target.value)}
                     />
                 </FormControl></HStack>
             <FormControl id="userName" isRequired>
@@ -147,7 +157,7 @@ const ModalMovimientosAdd = ({ product, onClose }: any) => {
                     placeholder="44082259"
                     _placeholder={{ color: "gray.500" }}
                     type="text"
-                    onChange={(event) => setDocumento(event.target.value)}
+                    onChange={(event) => setOrigen(event.target.value)}
                 />
             </FormControl>
             <FormControl id="userName" isRequired>
@@ -156,7 +166,7 @@ const ModalMovimientosAdd = ({ product, onClose }: any) => {
                     placeholder="user@domain.com"
                     _placeholder={{ color: "gray.500" }}
                     type="text"
-                    onChange={(event) => setEmail(event.target.value)}
+                    onChange={(event) => setDestino(event.target.value)}
                 />
             </FormControl>
             <FormControl id="userName" isRequired>
@@ -165,7 +175,7 @@ const ModalMovimientosAdd = ({ product, onClose }: any) => {
                     placeholder="29140...."
                     _placeholder={{ color: "gray.500" }}
                     type="text"
-                    onChange={(event) => setTelefono(event.target.value)}
+                    onChange={(event) => setCoche(event.target.value)}
                 />
             </FormControl>
             <FormControl id="userName" isRequired>
@@ -174,21 +184,21 @@ const ModalMovimientosAdd = ({ product, onClose }: any) => {
                     placeholder="29140...."
                     _placeholder={{ color: "gray.500" }}
                     type="text"
-                    onChange={(event) => setTelefono(event.target.value)}
+                    onChange={(event) => setPasajeros(event.target.value)}
                 />
             </FormControl>
             <FormControl id="userName" isRequired>
                 <FormLabel>Empresa</FormLabel>
-                <Input
-                    placeholder="29140...."
-                    _placeholder={{ color: "gray.500" }}
-                    type="text"
-                    onChange={(event) => setTelefono(event.target.value)}
-                />
+                <Select placeholder='Seleccionar Empresa' onChange={(event) => setEmpresa(event.target.value)}
+                >
+                    {empresas.map((empresa, key) =>
+                        <option value={empresa.id} key={key}>{empresa.nombre}</option>)}
+                </Select>
             </FormControl>
             <FormControl id="userName" isRequired>
                 <FormLabel>Chofer</FormLabel>
-                <Select placeholder='Seleccionar Chofer'>
+                <Select placeholder='Seleccionar Chofer' onChange={(event) => setChofer(event.target.value)}
+                >
                     {choferes.map((chofer, key) =>
                         <option value={chofer.id} key={key}>{chofer.apellido} {chofer.nombre}</option>)}
                 </Select>

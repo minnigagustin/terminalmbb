@@ -54,6 +54,8 @@ import { getCalles } from "@component/store/consultaSlice";
 import TableDefinitiva from "@component/components/tablaDefinitiva";
 import { getMovimientos } from "@component/store/movimientosSlice";
 import ModalMovimientosAdd from "@component/components/ModalMovimientosAdd";
+import { getChoferes } from "@component/store/choferesSlice";
+import { getEmpresas } from "@component/store/empresasSlice";
 
 const CardChart = dynamic(
   () => {
@@ -76,6 +78,8 @@ export default function Home() {
   } = useSelector((resp: any) => resp.movimientos);
   useEffect(() => {
     dispatch(getMovimientos());
+    dispatch(getChoferes());
+    dispatch(getEmpresas());
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
