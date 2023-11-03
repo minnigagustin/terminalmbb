@@ -60,7 +60,7 @@ const TableDefinitiva = ({
         label: nombre,
         value: nombre,
     }));
-
+    const cancelRef = React.useRef()
     const indexOfLastItem = currentPage * itemsPerPage;
     const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
@@ -102,7 +102,7 @@ const TableDefinitiva = ({
             alignItems="center"
             px="0"
         >
-            <AlertDialog isOpen={isAlertDialogOpen} onClose={onCloseAlertDialog}>
+            <AlertDialog isOpen={isAlertDialogOpen} onClose={onCloseAlertDialog} leastDestructiveRef={cancelRef}>
                 <AlertDialogOverlay>
                     <AlertDialogContent>
                         <AlertDialogHeader fontSize="lg" fontWeight="bold">
